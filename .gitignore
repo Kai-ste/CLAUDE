@@ -1,0 +1,39 @@
+# ~/.claude/.gitignore
+#
+# Strategy: ignore EVERYTHING by default, then un-ignore the curated config we
+# actually want to version. This keeps the repo clean as Claude Code adds new
+# runtime/state directories over time — they're ignored automatically.
+
+# --- ignore everything at the root ---
+/*
+
+# --- ...but keep the curated, hand-authored config ---
+!/agents/
+!/commands/
+!/skills/
+!/output-styles/
+!/conventions/
+!/settings.json
+!/CLAUDE.md
+!/keybindings.json
+!/README.md
+!/README_SOLATIS.md
+!/.gitignore
+
+# --- never commit secrets or machine-local state ---
+# (already covered by the catch-all above; listed explicitly as a safety net)
+.credentials.json
+settings.local.json
+.claude/            # stray nested ~/.claude/.claude created by the harness
+*.log
+
+# --- junk that can appear *inside* tracked folders ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+.DS_Store
+.ipynb_checkpoints/
